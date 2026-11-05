@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d18">
+  <title>Welcome | Pixel Battle</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/welcome.css">
+</head>
+<body>
+  <main class="onboarding-screen" aria-label="Player onboarding">
+    <section class="onboarding-card">
+      <div class="onboarding-brand" aria-label="Pixel Battle">
+        <div class="brand-mark"><span></span><span></span><span></span><span></span></div>
+        <div><strong>PIXEL</strong><strong>BATTLE</strong></div>
+      </div>
+
+      <div class="onboarding-heading">
+        <span class="onboarding-kicker">Multiplayer battlefield</span>
+        <h1>Welcome to Pixel Battle!</h1>
+        <p>Enter the battlefield. Choose your team. Make your mark.</p>
+      </div>
+
+      <form id="onboardingForm">
+        <label class="username-field" for="usernameInput">
+          <span>Player name</span>
+          <input id="usernameInput" name="username" type="text" maxlength="18" autocomplete="nickname" placeholder="Enter your username">
+        </label>
+
+        <fieldset class="onboarding-teams">
+          <legend>Choose your team</legend>
+          <div class="onboarding-team-grid">
+            <button class="onboarding-team red" type="button" data-team="Red">
+              <span class="onboarding-team-icon">R</span>
+              <span><strong>Team Red</strong><small>Defend the front line</small></span>
+              <i></i>
+            </button>
+            <button class="onboarding-team blue selected" type="button" data-team="Blue">
+              <span class="onboarding-team-icon">B</span>
+              <span><strong>Team Blue</strong><small>Control the centre</small></span>
+              <i></i>
+            </button>
+            <button class="onboarding-team green" type="button" data-team="Green">
+              <span class="onboarding-team-icon">G</span>
+              <span><strong>Team Green</strong><small>Expand the canvas</small></span>
+              <i></i>
+            </button>
+          </div>
+        </fieldset>
+
+        <button class="continue-button" id="continueButton" type="submit">
+          <span>Continue to Game</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="onboarding-error" id="onboardingError" role="alert"></p>
+      </form>
+    </section>
+  </main>
+  <script src="js/welcome.js"></script>
+</body>
+</html>

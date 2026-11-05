@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d18">
+  <title>Pixel Battle</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell" id="appShell">
+    <header class="topbar">
+      <div class="brand" aria-label="Pixel Battle">
+        <div class="brand-mark"><span></span><span></span><span></span><span></span></div>
+        <div>
+          <strong>PIXEL</strong>
+          <strong>BATTLE</strong>
+        </div>
+      </div>
+
+      <div class="topbar-status">
+        <div class="status-pill"><span class="status-dot"></span><span id="onlineCount">1,284</span> online</div>
+        <div class="connection"><span class="status-dot"></span> Connected</div>
+      </div>
+
+      <div class="player-menu">
+        <div class="player-avatar">NV</div>
+        <div class="player-copy">
+          <strong>Nova</strong>
+          <span><i class="team-dot blue"></i> Team Blue</span>
+        </div>
+        <button class="icon-button" id="settingsButton" aria-label="Settings">
+          <svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.8 1.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-2.5V20a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L7.7 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 6.5 14h-.2v-2.5h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L7.7 8.5l1.8-1.8.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.2H15v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1 1.8 1.8-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2V14H21a1.7 1.7 0 0 0-1.6 1Z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <aside class="left-column">
+        <section class="panel tools-panel">
+          <div class="panel-heading"><span>Tools</span><span class="shortcut">B</span></div>
+          <div class="tool-grid" id="toolGrid">
+            <button class="tool-button active" data-tool="pen" aria-label="Pixel pen" title="Pixel Pen (B)"><svg viewBox="0 0 24 24"><path d="m15.5 4.5 4 4L9 19l-5 1 1-5 10.5-10.5Z"/><path d="m13.5 6.5 4 4"/></svg><span>Pixel Pen</span></button>
+            <button class="tool-button" data-tool="line" aria-label="Line tool" title="Line Tool"><svg viewBox="0 0 24 24"><path d="M5 19 19 5"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/></svg><span>Line</span></button>
+            <button class="tool-button" data-tool="circle" aria-label="Circle tool" title="Circle Tool"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="1"/></svg><span>Circle</span></button>
+            <button class="tool-button" data-tool="polygon" aria-label="Polygon fill" title="Polygon Fill"><svg viewBox="0 0 24 24"><path d="m12 3 8 5v9l-8 4-8-4V8l8-5Z"/><path d="m12 3 0 18M4 8l16 9M20 8 4 17"/></svg><span>Polygon</span></button>
+            <button class="tool-button" data-tool="bucket" aria-label="Paint bucket" title="Paint Bucket"><svg viewBox="0 0 24 24"><path d="m5 8 7-5 7 5-7 6-7-6Z"/><path d="M7 12v5a5 5 0 0 0 10 0v-2"/><path d="M19 17s2 2 2 3a2 2 0 0 1-4 0c0-1 2-3 2-3Z"/></svg><span>Bucket</span></button>
+          </div>
+        </section>
+
+        <section class="panel colour-panel">
+          <div class="panel-heading"><span>Colour</span><span class="selected-tag" id="selectedTag">#8B5CF6</span></div>
+          <div class="colour-grid" id="colourGrid" aria-label="Colour palette"></div>
+          <div class="colour-values">
+            <div><span>RGB</span><strong id="rgbValue">139, 92, 246</strong></div>
+            <div><span>HEX</span><strong id="hexValue">#8B5CF6</strong></div>
+            <div><span>HSB</span><strong id="hsbValue">262°, 63%, 96%</strong></div>
+          </div>
+        </section>
+
+        <section class="panel team-panel">
+          <div class="panel-heading"><span>Team</span><span class="team-count">1/3</span></div>
+          <div class="ownership-legend" aria-label="Team ownership colours">
+            <span><i class="legend-red"></i>Red</span><span><i class="legend-blue"></i>Blue</span><span><i class="legend-green"></i>Green</span>
+          </div>
+          <div class="team-list" id="teamList">
+            <button class="team-card red" data-team="Red"><span class="team-icon">R</span><span><strong>Team Red</strong><small>412 players</small></span><i></i></button>
+            <button class="team-card blue selected" data-team="Blue"><span class="team-icon">B</span><span><strong>Team Blue</strong><small>438 players</small></span><i></i></button>
+            <button class="team-card green" data-team="Green"><span class="team-icon">G</span><span><strong>Team Green</strong><small>434 players</small></span><i></i></button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="canvas-column">
+        <div class="canvas-toolbar">
+          <div class="canvas-title">
+            <span class="live-badge"><i></i> Live canvas</span>
+            <span id="canvasMode">Pixel Pen</span>
+          </div>
+          <div class="canvas-actions">
+            <div class="zoom-control">
+              <button id="zoomOut" aria-label="Zoom out">−</button>
+              <span id="zoomLabel">100%</span>
+              <button id="zoomIn" aria-label="Zoom in">+</button>
+              <button id="resetView" aria-label="Reset view">
+                <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.6"/><path d="M4 4v4.6h4.6"/></svg>
+              </button>
+            </div>
+            <button class="replay-button" id="replayDrawing" aria-label="Replay drawing history">
+              <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 9"/><path d="M4 4v5h5"/><path d="m10 9 5 3-5 3V9Z"/></svg>
+              Replay
+            </button>
+            <button class="clear-button" id="clearCanvas">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"/></svg>
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="canvas-frame" id="canvasFrame">
+          <div class="canvas-stage" id="canvasStage">
+            <canvas id="pixelCanvas" width="128" height="128" aria-label="128 by 128 pixel drawing canvas"></canvas>
+            <div class="grid-overlay" id="gridOverlay"></div>
+          </div>
+          <div class="pixel-selection" id="pixelSelection" aria-hidden="true"></div>
+          <div class="coordinate-pill">
+            <span>Pixel</span>
+            <strong>X <b id="coordX">--</b></strong>
+            <strong>Y <b id="coordY">--</b></strong>
+            <span class="owner-chip" id="pixelOwner"><i></i> Unclaimed</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-column">
+        <section class="panel player-panel">
+          <div class="panel-heading"><span>Player</span><span class="rank-badge">#42</span></div>
+          <div class="player-summary">
+            <div class="player-avatar large">NV</div>
+            <div><strong>Nova</strong><span><i class="team-dot blue"></i> Team Blue</span></div>
+          </div>
+          <div class="stats-row">
+            <div><span>Actions</span><strong id="actionCount">128</strong></div>
+            <div class="cooldown-stat"><span>Cooldown</span><strong id="cooldownTime">Ready</strong></div>
+          </div>
+          <div class="cooldown-track"><div id="cooldownProgress"></div></div>
+        </section>
+
+        <section class="panel scoreboard-panel">
+          <div class="panel-heading"><span>Team scores</span><span class="round-badge">Round 4</span></div>
+          <div class="score-list">
+            <div class="score-row"><span class="rank rank-1">1</span><i class="score-team blue"></i><div><strong>Team Blue</strong><small>12,840 pixels</small></div><span>38%</span></div>
+            <div class="score-bar blue"><i style="width:38%"></i></div>
+            <div class="score-row"><span class="rank rank-2">2</span><i class="score-team red"></i><div><strong>Team Red</strong><small>11,560 pixels</small></div><span>34%</span></div>
+            <div class="score-bar red"><i style="width:34%"></i></div>
+            <div class="score-row"><span class="rank rank-3">3</span><i class="score-team green"></i><div><strong>Team Green</strong><small>9,420 pixels</small></div><span>28%</span></div>
+            <div class="score-bar green"><i style="width:28%"></i></div>
+          </div>
+        </section>
+
+        <section class="panel activity-panel">
+          <div class="panel-heading"><span>Live activity</span><span class="live-dot"></span></div>
+          <div class="activity-list" id="activityList">
+            <div class="activity-item"><span class="activity-avatar red-avatar">A</span><div><p><strong>Alex</strong> placed a red pixel</p><time>just now</time></div></div>
+            <div class="activity-item"><span class="activity-avatar blue-avatar">J</span><div><p><strong>John</strong> drew a blue line</p><time>8s ago</time></div></div>
+            <div class="activity-item"><span class="activity-avatar green-avatar">S</span><div><p><strong>Sarah</strong> filled a green region</p><time>14s ago</time></div></div>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

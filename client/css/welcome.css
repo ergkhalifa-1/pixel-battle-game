@@ -1,0 +1,117 @@
+/* Welcome page layout and team selection states. */
+.onboarding-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(139, 92, 246, 0.12), transparent 26%),
+    linear-gradient(135deg, #080b14, #0b1020);
+}
+
+.onboarding-card {
+  width: min(620px, 100%);
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(17, 24, 39, 0.94);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+}
+
+.onboarding-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.onboarding-brand > div:last-child {
+  display: grid;
+  line-height: 0.82;
+  font-size: 18px;
+}
+
+.onboarding-brand > div:last-child strong:last-child { color: var(--cyan); }
+.onboarding-heading { text-align: center; margin-bottom: 26px; }
+.onboarding-kicker { color: var(--cyan); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; }
+.onboarding-heading h1 { margin: 7px 0 8px; font-size: clamp(24px, 4vw, 38px); }
+.onboarding-heading p { margin: 0; color: var(--muted); font-size: 14px; }
+
+.username-field { display: grid; gap: 8px; margin-bottom: 22px; }
+.username-field > span,
+.onboarding-teams legend { color: #cbd5e1; font-size: 11px; font-weight: 700; }
+
+.username-field input {
+  height: 48px;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  outline: none;
+  padding: 0 14px;
+  color: white;
+  background: rgba(6, 10, 19, 0.8);
+}
+
+.username-field input:focus { border-color: rgba(139, 92, 246, 0.7); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1); }
+.username-field input::placeholder { color: #64748b; }
+
+.onboarding-teams { border: 0; padding: 0; margin: 0 0 22px; }
+.onboarding-teams legend { margin-bottom: 10px; }
+.onboarding-team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.onboarding-team {
+  min-height: 112px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 38px 1fr 10px;
+  align-items: center;
+  gap: 9px;
+  color: white;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.025);
+  transition: 0.18s ease;
+}
+
+.onboarding-team:hover { transform: translateY(-2px); }
+.onboarding-team.selected.red { border-color: rgba(239, 91, 103, 0.6); background: rgba(239, 91, 103, 0.09); box-shadow: 0 0 20px rgba(239, 91, 103, 0.08); }
+.onboarding-team.selected.blue { border-color: rgba(59, 130, 246, 0.6); background: rgba(59, 130, 246, 0.09); box-shadow: 0 0 20px rgba(59, 130, 246, 0.08); }
+.onboarding-team.selected.green { border-color: rgba(54, 211, 153, 0.6); background: rgba(54, 211, 153, 0.09); box-shadow: 0 0 20px rgba(54, 211, 153, 0.08); }
+
+.onboarding-team-icon { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; }
+.onboarding-team.red .onboarding-team-icon { color: #fecaca; background: rgba(239, 91, 103, 0.16); }
+.onboarding-team.blue .onboarding-team-icon { color: #bfdbfe; background: rgba(59, 130, 246, 0.16); }
+.onboarding-team.green .onboarding-team-icon { color: #bbf7d0; background: rgba(54, 211, 153, 0.16); }
+.onboarding-team > span:nth-child(2) { display: grid; gap: 5px; }
+.onboarding-team strong { font-size: 12px; }
+.onboarding-team small { color: var(--muted); font-size: 9px; line-height: 1.35; }
+.onboarding-team i { width: 7px; height: 7px; border-radius: 50%; opacity: 0; }
+.onboarding-team.selected i { opacity: 1; }
+.onboarding-team.selected.red i { background: var(--red); box-shadow: 0 0 8px var(--red); }
+.onboarding-team.selected.blue i { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+.onboarding-team.selected.green i { background: var(--green); box-shadow: 0 0 8px var(--green); }
+
+.continue-button {
+  width: 100%; height: 48px;
+  border: 0; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  color: white; font-weight: 800;
+  background: linear-gradient(90deg, #7157d9, #4f8df7);
+  box-shadow: 0 10px 24px rgba(79, 141, 247, 0.18);
+  transition: 0.18s ease;
+}
+
+.continue-button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.continue-button svg { width: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.onboarding-error { min-height: 18px; margin: 8px 0 -8px; text-align: center; color: #fda4af; font-size: 11px; }
+
+@media (max-width: 500px) {
+  .onboarding-screen { padding: 12px; align-items: start; }
+  .onboarding-card { padding: 20px 14px; margin-top: 12px; }
+  .onboarding-brand { margin-bottom: 22px; }
+  .onboarding-team-grid { grid-template-columns: 1fr; }
+  .onboarding-team { min-height: 68px; }
+  .onboarding-heading { margin-bottom: 20px; }
+}
